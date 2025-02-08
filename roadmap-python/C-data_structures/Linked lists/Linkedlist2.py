@@ -7,7 +7,7 @@ class LinkedList:
     def __init__(self):
         self.head = None
     
-    def insertion_at_end(self, data):
+    def append(self, data):
         new_node = Node(data)
         # if LL is empty, new_node will become first in LL
         if not self.head:
@@ -19,7 +19,7 @@ class LinkedList:
             last = last.next
         last.next = new_node
         
-    def insertion_at_beginning(self, data):
+    def insert_at_begin(self, data):
         # create a new node
         new_node = Node(data)
         # new_node next will be the head 
@@ -27,7 +27,7 @@ class LinkedList:
         # the head now will be the new node
         self.head = new_node
     
-    def insertion_after_node(self, data, prev_node):
+    def insert_after(self, data, prev_node):
         if not prev_node:
             print("Node must be in linked list.")
             return
@@ -55,11 +55,11 @@ class LinkedList:
         print("None")
         
 llist = LinkedList()
-llist.insertion_at_end(1)
-llist.insertion_at_end(2)
-llist.insertion_at_end(3)
-llist.insertion_at_end(4)
-llist.insertion_at_beginning(5)
-# llist.insertion_after_node(9, 3)
+llist.append(1)
+llist.append(2)
+llist.append(4)
+llist.append(5)
+llist.insert_at_begin(5)
+llist.insertion_after(9, 3)
 llist.reverse()
 llist.display()            
