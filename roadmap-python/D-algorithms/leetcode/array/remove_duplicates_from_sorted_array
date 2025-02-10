@@ -1,0 +1,16 @@
+class Solution:
+    def removeDuplicates(nums):
+        seen = set()
+        counter_k = 0
+        for num in nums:
+            if num not in seen:
+                seen.add(num)
+            else:
+                counter_k += 1
+
+
+        return list(seen)
+    
+
+print(Solution.removeDuplicates([1,1,2]))
+print(Solution.removeDuplicates([0,0,1,1,1,2,2,3,3,4]))
