@@ -6,6 +6,7 @@ class Solution:
         for i in range(1, len(nums)):
             p[i] = p[i - 1] * nums[i]
         print(p)
+        
         # sufix
         s = [1] * (len(nums))
         s[0] = nums[-1]
