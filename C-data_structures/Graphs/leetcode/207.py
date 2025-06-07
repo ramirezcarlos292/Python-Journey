@@ -1,0 +1,34 @@
+# https://leetcode.com/problems/course-schedule/
+from typing import List
+# Optimal Solution
+class Solution:
+    def canFinish(self, numCourses: int, prerequisites: List[int]) -> bool:
+        preMap = {i:[] for i in range(numCourses)}
+        for crs, pre in prerequisites:
+            preMap[crs].append(pre)
+        
+        # visitSet -> all courses along the curr DFS path
+        visitSet = set()
+        def dfs(crs):
+            if crs in visitSet:
+                return False
+            if preMap[crs] == []:
+                return True
+            
+            visitSet.add(crs)
+            for pre in preMap[crs]:
+                if not dfs(pre): return False
+            visitSet.remove(crs)
+            preMap[crs] = []
+            return True
+        
+        for crs in range(numCourses):
+            if not dfs(crs): return False
+        return True
+    
+numCourses = 2
+prerequisites = [[1,0]]
+print(Solution().canFinish(numCourses, prerequisites))
+numCourses = 2
+prerequisites = [[1,0],[0,1]]
+print(Solution().canFinish(numCourses, prerequisites))
